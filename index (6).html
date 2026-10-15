@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zaraa Unisex Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&family=Manrope:wght@400;500;700&display=swap">
+<style>
+/* Layout: dark editorial salon site. Arch-shaped hero echoing salon mirrors, gold hairlines, one interactive shade picker as the showpiece. */
+:root{
+  --ink:#0c0a08; --ink2:#15110d; --line:#2e2519;
+  --gold:#c9a24b; --gold-hi:#ecd48f; --cream:#f2e9d8; --mute:#a99d88;
+  --display:'Bodoni Moda','Didot','Playfair Display',Georgia,serif;
+  --body:'Manrope','Helvetica Neue',Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0;overflow-x:hidden}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.gold{background:linear-gradient(100deg,var(--gold) 0%,var(--gold-hi) 45%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:12px max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px))}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-family:var(--display);font-size:26px;letter-spacing:.18em;text-decoration:none;line-height:1}
+.logo small{display:block;font-family:var(--body);font-size:9px;letter-spacing:.3em;color:var(--mute);margin-top:5px}
+nav{display:flex;align-items:center;gap:22px;font-size:14px}
+nav a{text-decoration:none;color:var(--mute)}
+nav a:hover{color:var(--cream)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--gold);background:var(--gold);color:#1a1307;font:700 14px var(--body);letter-spacing:.04em;padding:13px 24px;border-radius:999px;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{background:var(--gold-hi);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--cream);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--gold);background:transparent}
+@media(max-width:640px){nav a.hide-s{display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-block:56px 40px}
+.hero h1{font-size:clamp(40px,7vw,78px);margin:16px 0 20px}
+.hero h1 em{font-style:italic}
+.hero p.lead{color:var(--mute);max-width:46ch;font-size:17px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.facts{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:36px;padding-top:22px;border-top:1px solid var(--line)}
+.facts div{min-width:0}
+.facts b{display:block;font-family:var(--display);font-size:26px;font-weight:500}
+.facts span{font-size:12px;color:var(--mute);letter-spacing:.08em;text-transform:uppercase}
+.arch{position:relative;aspect-ratio:3/4;max-width:100%;width:100%;max-height:520px;margin:0 auto;border-radius:999px 999px 18px 18px;border:1px solid var(--gold);padding:10px}
+.arch-in{width:100%;height:100%;border-radius:999px 999px 10px 10px;overflow:hidden;position:relative;
+  background:radial-gradient(ellipse at 50% 28%,#3a2a14 0%,#1b130a 48%,#0c0a08 100%)}
+.arch-in svg{position:absolute;inset:0;width:100%;height:100%}
+.badge{position:absolute;right:-6px;bottom:42px;background:var(--ink);border:1px solid var(--gold);border-radius:14px;padding:10px 14px;font-size:12px;line-height:1.35;box-shadow:0 12px 30px #0009}
+.badge b{display:block;font-family:var(--display);font-size:18px;color:var(--gold-hi);font-weight:500}
+@media(max-width:820px){.hero{grid-template-columns:1fr;padding-top:36px}.arch{max-width:340px}.badge{right:0}}
+
+/* sections */
+section{padding-block:64px;border-top:1px solid var(--line)}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(30px,4.6vw,48px);margin-top:10px}
+.sec-head p{color:var(--mute);max-width:40ch;font-size:15px}
+
+/* services */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:22px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:transparent;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:9px 20px;font:500 14px var(--body);cursor:pointer;transition:all .2s}
+.tab:hover{color:var(--cream);border-color:var(--gold)}
+.tab[aria-selected="true"]{background:var(--gold);border-color:var(--gold);color:#1a1307;font-weight:700}
+.menu{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.menu li{display:flex;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1px solid var(--line);min-width:0}
+.menu .nm{flex:1 1 auto;min-width:0}
+.menu .nm b{display:block;font-weight:500;font-size:17px}
+.menu .nm span{font-size:13px;color:var(--mute)}
+.menu .pr{font-family:var(--display);font-size:20px;color:var(--gold-hi);white-space:nowrap;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--mute);margin-top:18px}
+@media(max-width:720px){.menu{grid-template-columns:1fr}}
+
+/* shade picker */
+.picker{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+.stage{background:var(--ink2);border:1px solid var(--line);border-radius:22px;padding:18px;display:flex;justify-content:center}
+.stage svg{width:100%;max-width:300px;height:auto;display:block}
+.stage .strand{transition:stop-color .6s ease}
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
+.sw{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:12px 10px;color:var(--cream);font:500 13px var(--body);cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:8px;transition:border-color .2s}
+.sw i{display:block;height:26px;border-radius:8px}
+.sw[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+.picked h3{font-size:30px}
+.picked p{color:var(--mute);margin-top:6px;font-size:15px}
+@media(max-width:820px){.picker{grid-template-columns:1fr}}
+
+/* booking */
+.book{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+form{display:grid;gap:18px;min-width:0}
+label,.lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px}
+input,select{width:100%;background:var(--ink2);color:var(--cream);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font:500 16px var(--body)}
+input::placeholder{color:#6f6656}
+input:focus,select:focus{border-color:var(--gold);outline:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--ink2);color:var(--cream);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font:500 14px var(--body);cursor:pointer;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1a1307;border-color:var(--gold);font-weight:700}
+.chip:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.summary{background:var(--ink2);border:1px solid var(--gold);border-radius:22px;padding:28px;position:sticky;top:90px;min-width:0}
+.summary h3{font-size:26px;margin-bottom:16px}
+.summary dl{margin:0;display:grid;gap:12px}
+.summary dt{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.summary dd{margin:2px 0 0;font-size:17px}
+.summary .total{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+.summary .total b{font-family:var(--display);font-size:30px;color:var(--gold-hi);font-weight:500}
+.done{display:none;margin-top:18px;padding:14px 16px;border-radius:12px;background:#1f1a0d;border:1px solid var(--gold);font-size:14px}
+.done.on{display:block}
+@media(max-width:820px){.book{grid-template-columns:1fr}.summary{position:static}}
+@media(max-width:420px){.row2{grid-template-columns:1fr}}
+
+/* branches */
+.branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.branch{border:1px solid var(--line);border-radius:22px;padding:28px;background:var(--ink2);min-width:0}
+.branch h3{font-size:26px;margin:8px 0 14px}
+.branch p{color:var(--mute);font-size:15px}
+.branch .ph{margin-top:14px;font-family:var(--display);font-size:22px;color:var(--cream);user-select:all}
+footer{padding-block:40px 48px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;color:var(--mute);font-size:13px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">ZARAA<small>UNISEX SALON · KOTA</small></a>
+    <nav>
+      <a class="hide-s" href="#services">Services</a>
+      <a class="hide-s" href="#shades">Try a shade</a>
+      <a class="hide-s" href="#branches">Branches</a>
+      <a class="btn" href="#book">Book now</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Hair · Skin · Nails · Bridal</p>
+      <h1>Your best look, <em class="gold">booked in a minute.</em></h1>
+      <p class="lead">Colour, cuts, spa, nails and bridal makeup under one roof. Pick your service, choose a slot and walk in. No calls, no waiting.</p>
+      <div class="cta-row">
+        <a class="btn" href="#book">Book an appointment</a>
+        <a class="btn ghost" href="#shades">Try a hair shade</a>
+      </div>
+      <div class="facts">
+        <div><b>2</b><span>Branches</span></div>
+        <div><b>10 am – 8 pm</b><span>Open all 7 days</span></div>
+        <div><b>5</b><span>Service lines</span></div>
+      </div>
+    </div>
+    <div class="arch" aria-hidden="true">
+      <div class="arch-in">
+        <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#7a5a22"/><stop offset=".5" stop-color="#d9b862"/><stop offset="1" stop-color="#8a6a2a"/>
+            </linearGradient>
+          </defs>
+          <g fill="none" stroke="url(#hg)" stroke-linecap="round" opacity=".95">
+            <path d="M80 -10 C 40 90, 130 150, 85 250 S 60 360, 90 420" stroke-width="20"/>
+            <path d="M120 -10 C 90 90, 170 160, 125 260 S 110 370, 135 420" stroke-width="22"/>
+            <path d="M160 -10 C 130 100, 210 170, 165 270 S 150 370, 175 420" stroke-width="22"/>
+            <path d="M200 -10 C 170 90, 250 160, 205 250 S 190 360, 215 420" stroke-width="20"/>
+            <path d="M235 -10 C 210 90, 280 150, 245 240 S 230 350, 255 420" stroke-width="16"/>
+          </g>
+          <g fill="none" stroke="#fff3cf" stroke-width="2" stroke-linecap="round" opacity=".35">
+            <path d="M125 10 C 100 100, 175 165, 132 262"/><path d="M168 10 C 140 105, 215 175, 172 272"/>
+          </g>
+        </svg>
+      </div>
+      <div class="badge"><b>Bridal &amp; party</b>Trial slots every week</div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="sec-head">
+      <div><p class="eyebrow">Menu</p><h2>Services &amp; prices</h2></div>
+      <p>Sample menu for this demo. Final prices are set by the salon.</p>
+    </div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <ul class="menu" id="menu"></ul>
+    <p class="note">Prices in ₹. Hair length and product may change the final price.</p>
+  </section>
+
+  <section id="shades">
+    <div class="sec-head">
+      <div><p class="eyebrow">Try before you colour</p><h2>Find your shade</h2></div>
+      <p>Tap a shade to see it on the hair. Book the same colour in one tap.</p>
+    </div>
+    <div class="picker">
+      <div class="stage">
+        <svg viewBox="0 0 300 380" role="img" aria-label="Hair preview in the selected shade">
+          <defs>
+            <linearGradient id="s1" x1="0" y1="0" x2="0" y2="1">
+              <stop class="strand" id="a0" offset="0" stop-color="#2b1710"/><stop class="strand" id="a1" offset=".55" stop-color="#5a3320"/><stop class="strand" id="a2" offset="1" stop-color="#b07a4f"/>
+            </linearGradient>
+          </defs>
+          <circle cx="150" cy="190" r="150" fill="#1d160d"/>
+          <g fill="none" stroke="url(#s1)" stroke-linecap="round">
+            <path d="M70 -10 C 25 90, 120 150, 72 250 S 45 340, 80 400" stroke-width="30"/>
+            <path d="M115 -10 C 80 90, 165 160, 118 260 S 100 350, 128 400" stroke-width="34"/>
+            <path d="M162 -10 C 128 100, 210 170, 162 270 S 145 360, 172 400" stroke-width="34"/>
+            <path d="M208 -10 C 175 90, 255 160, 208 250 S 190 350, 218 400" stroke-width="32"/>
+            <path d="M250 -10 C 222 90, 290 150, 250 240 S 235 340, 262 400" stroke-width="26"/>
+          </g>
+          <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".18">
+            <path d="M118 10 C 90 100, 168 165, 124 262"/><path d="M166 10 C 136 105, 214 175, 166 272"/><path d="M80 20 C 40 100, 122 155, 78 250"/>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <div class="swatches" id="swatches"></div>
+        <div class="picked">
+          <h3 id="pName">Chocolate Balayage</h3>
+          <p id="pDesc">Soft dark roots melting into warm caramel ends.</p>
+          <div class="cta-row"><a class="btn" href="#book" id="pBook">Book this colour</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="sec-head">
+      <div><p class="eyebrow">Appointments</p><h2>Reserve your slot</h2></div>
+      <p>Choose what you need. The summary updates as you go.</p>
+    </div>
+    <div class="book">
+      <form id="form" novalidate>
+        <div>
+          <label for="svc">Service</label>
+          <select id="svc"></select>
+        </div>
+        <div>
+          <span class="lbl">Branch</span>
+          <div class="chips" id="branchChips">
+            <button type="button" class="chip" data-v="Branch One" aria-pressed="true">Branch One</button>
+            <button type="button" class="chip" data-v="Branch Two" aria-pressed="false">Branch Two (women only)</button>
+          </div>
+        </div>
+        <div class="row2">
+          <div><label for="date">Date</label><input id="date" type="date"></div>
+          <div><label for="name">Your name</label><input id="name" type="text" placeholder="e.g. Priya Sharma" autocomplete="name"></div>
+        </div>
+        <div>
+          <span class="lbl">Time</span>
+          <div class="chips" id="slots"></div>
+        </div>
+        <div>
+          <label for="phone">WhatsApp number</label>
+          <input id="phone" type="tel" inputmode="tel" placeholder="98XXX XXXXX" autocomplete="tel">
+        </div>
+        <button class="btn" type="submit">Confirm booking</button>
+        <p class="done" id="done" role="status"></p>
+      </form>
+      <aside class="summary" aria-live="polite">
+        <h3>Your booking</h3>
+        <dl>
+          <div><dt>Service</dt><dd id="sSvc">-</dd></div>
+          <div><dt>Branch</dt><dd id="sBr">Branch One</dd></div>
+          <div><dt>When</dt><dd id="sWhen">Pick a date and time</dd></div>
+          <div><dt>Duration</dt><dd id="sDur">-</dd></div>
+        </dl>
+        <div class="total"><span>Starting at</span><b id="sPrice">₹0</b></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="branches">
+    <div class="sec-head">
+      <div><p class="eyebrow">Visit us</p><h2>Two branches in Kota</h2></div>
+      <p>Placeholder addresses and numbers for this demo.</p>
+    </div>
+    <div class="branches">
+      <div class="branch">
+        <p class="eyebrow">Unisex</p>
+        <h3>Branch One</h3>
+        <p>Main Road, Near City Mall<br>Kota, Rajasthan<br>Open 10 am – 8 pm, every day</p>
+        <p class="ph">+91 98XXX XXXXX</p>
+      </div>
+      <div class="branch">
+        <p class="eyebrow">Women's salon</p>
+        <h3>Branch Two</h3>
+        <p>Garden Road, Opposite Park<br>Kota, Rajasthan<br>Open 10 am – 8 pm, every day</p>
+        <p class="ph">+91 97XXX XXXXX</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© Zaraa Unisex Salon. Sample brand for a website concept.</span>
+    <span>Concept design by Ashfaq</span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var SERVICES={
+    "Hair":[["Haircut (women)","45 min",600],["Haircut (men)","30 min",250],["Global hair colour","2 hr",2500],["Highlights / balayage","3 hr",3500],["Keratin smoothing","3 hr",4500],["Hair spa","1 hr",900]],
+    "Skin":[["Clean-up","45 min",700],["Signature facial","1 hr",1200],["Hydra glow facial","1 hr 15 min",2200],["De-tan treatment","45 min",800],["Threading (full face)","20 min",150],["Waxing (full arms)","30 min",350]],
+    "Nails":[["Classic manicure","40 min",500],["Classic pedicure","50 min",700],["Gel polish","1 hr",1200],["Nail extensions","2 hr",2000],["Nail art, per nail","10 min",300]],
+    "Bridal":[["Party makeup","1 hr 15 min",3000],["HD bridal makeup","3 hr",8000],["Airbrush bridal makeup","3 hr",12000],["Bridal trial","2 hr",2500],["Saree / hair styling","1 hr",1500]],
+    "Men":[["Beard trim &amp; shape","20 min",150],["Hair colour (men)","1 hr 15 min",1200],["Men's facial","45 min",900],["Head massage","20 min",300],["Groom package","3 hr",6000]]
+  };
+  var SHADES=[
+    {n:"Chocolate Balayage",d:"Soft dark roots melting into warm caramel ends.",c:["#2b1710","#5a3320","#b07a4f"],s:"Highlights / balayage"},
+    {n:"Burgundy",d:"Deep wine red with a glossy, jewel-like finish.",c:["#4d0f1c","#8a1f33","#c4485b"],s:"Global hair colour"},
+    {n:"Ash Blonde",d:"Cool, smoky blonde. Needs lightening, so plan 3 hours.",c:["#7c7667","#b3ab97","#e6dfcc"],s:"Highlights / balayage"},
+    {n:"Rose Gold",d:"Soft pink metallic tone that glows in daylight.",c:["#8e4c4c","#cf8a82","#f2c6b6"],s:"Global hair colour"},
+    {n:"Jet Black",d:"Intense blue-black shine for a sharp, polished look.",c:["#050507","#17171f","#383846"],s:"Global hair colour"},
+    {n:"Copper",d:"Bright, warm copper for a bold statement.",c:["#6b2a0d","#b4531d","#e89548"],s:"Global hair colour"}
+  ];
+  var $=function(id){return document.getElementById(id)};
+  var fmt=function(n){return "₹"+n.toLocaleString("en-IN")};
+
+  /* services tabs */
+  var tabs=$("tabs"),menu=$("menu"),cur="Hair";
+  function drawMenu(){
+    menu.innerHTML=SERVICES[cur].map(function(s){return '<li><div class="nm"><b>'+s[0]+'</b><span>'+s[1]+'</span></div><div class="pr">'+fmt(s[2])+'</div></li>'}).join("");
+    Array.prototype.forEach.call(tabs.children,function(t){t.setAttribute("aria-selected",t.dataset.k===cur)});
+  }
+  Object.keys(SERVICES).forEach(function(k){
+    var b=document.createElement("button");b.className="tab";b.type="button";b.textContent=k;b.dataset.k=k;b.setAttribute("role","tab");
+    b.onclick=function(){cur=k;drawMenu()};tabs.appendChild(b);
+  });
+  drawMenu();
+
+  /* shade picker */
+  var sw=$("swatches");
+  function setShade(i){
+    var s=SHADES[i];
+    ["a0","a1","a2"].forEach(function(id,j){$(id).setAttribute("stop-color",s.c[j])});
+    $("pName").textContent=s.n;$("pDesc").textContent=s.d;
+    Array.prototype.forEach.call(sw.children,function(b,j){b.setAttribute("aria-pressed",j===i)});
+    $("pBook").onclick=function(){selectSvc(s.s)};
+  }
+  SHADES.forEach(function(s,i){
+    var b=document.createElement("button");b.type="button";b.className="sw";
+    b.innerHTML='<i style="background:linear-gradient(90deg,'+s.c.join(",")+')"></i>'+s.n;
+    b.onclick=function(){setShade(i)};sw.appendChild(b);
+  });
+  setShade(0);
+
+  /* booking */
+  var all=[];Object.keys(SERVICES).forEach(function(k){SERVICES[k].forEach(function(s){all.push({n:s[0].replace("&amp;","&"),t:s[1],p:s[2]})})});
+  var svc=$("svc");
+  all.forEach(function(s,i){var o=document.createElement("option");o.value=i;o.textContent=s.n+"  ·  "+fmt(s.p);svc.appendChild(o)});
+  function selectSvc(name){for(var i=0;i<all.length;i++){if(all[i].n===name){svc.value=i;break}}render()}
+  var times=["10:00 AM","11:00 AM","12:00 PM","01:00 PM","02:00 PM","03:00 PM","04:00 PM","05:00 PM","06:00 PM","07:00 PM"];
+  var slot=null,branch="Branch One",slots=$("slots");
+  var dt=$("date");
+  var now=new Date(),pad=function(n){return(n<10?"0":"")+n};
+  var today=now.getFullYear()+"-"+pad(now.getMonth()+1)+"-"+pad(now.getDate());
+  dt.min=today;dt.value=today;
+  function drawSlots(){
+    var seed=dt.value.split("-").reduce(function(a,b){return a+ +b},0);
+    slots.innerHTML="";
+    times.forEach(function(t,i){
+      var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=t;
+      b.disabled=((seed+i*3)%5===0);
+      if(b.disabled&&slot===t)slot=null;
+      b.setAttribute("aria-pressed",slot===t);
+      b.onclick=function(){slot=t;drawSlots();render()};
+      slots.appendChild(b);
+    });
+  }
+  function render(){
+    var s=all[+svc.value];
+    $("sSvc").textContent=s.n;$("sDur").textContent=s.t;$("sPrice").textContent=fmt(s.p);$("sBr").textContent=branch;
+    var d=dt.value?new Date(dt.value+"T00:00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"}):"";
+    $("sWhen").textContent=(d&&slot)?d+", "+slot:"Pick a date and time";
+  }
+  Array.prototype.forEach.call($("branchChips").children,function(b){
+    b.onclick=function(){branch=b.dataset.v;Array.prototype.forEach.call($("branchChips").children,function(x){x.setAttribute("aria-pressed",x===b)});render()};
+  });
+  svc.onchange=render;dt.onchange=function(){drawSlots();render()};
+  $("form").addEventListener("submit",function(e){
+    e.preventDefault();
+    var done=$("done"),name=$("name").value.trim();
+    if(!name||!slot){done.className="done on";done.textContent="Add your name and pick a time to continue.";return}
+    var s=all[+svc.value];
+    done.className="done on";
+    done.textContent="Booking ready for "+name+": "+s.n+" at "+branch+", "+$("sWhen").textContent+". On the live website this opens straight in the salon's WhatsApp.";
+  });
+  drawSlots();render();
+})();
+</script>
+
+</body>
+</html>
